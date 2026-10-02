@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "net.tipmaster/consensus",
+  "description": "Aggregated football predictions of TipMaster's human players, per match: home/draw/away shares, top scorelines, expert cohort. Read-only, no auth, no odds.",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.tipmaster.net/agents/",
+  "repository": {
+    "url": "https://github.com/We-The-Flywheel/tipmaster-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.tipmaster.net/api/agent/mcp"
+    }
+  ]
+}
