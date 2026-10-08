@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "net.tipmaster/consensus",
-  "description": "Crowd football predictions from TipMaster players, per match. Read-only, no auth, no odds.",
-  "version": "1.0.0",
+  "description": "Friday expert picks on 25 football matches from players with records since 1997. Read-only, free.",
+  "version": "1.1.0",
   "websiteUrl": "https://tipmaster.net/agents/",
   "repository": {
     "url": "https://github.com/We-The-Flywheel/tipmaster-mcp",
