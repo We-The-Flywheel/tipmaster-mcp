@@ -6,7 +6,7 @@ every prediction is on record, so TipMaster knows who has called matches right f
 
 For each match: the most likely final score, the home/draw/away split of the Top 20%, Top 25%
 and All players (ranked by their own record), and the result once played. Plus how often each
-group was right (home/draw/away and exact score) and the five best players' records.
+group was right (home/draw/away and exact score). No individual player or name is ever shown.
 
 - National: exact-score predictions on the Bundesliga, Premier League, LaLiga, Serie A,
   Ligue 1 and other top leagues in 15 countries.
