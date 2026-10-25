@@ -1,8 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "net.tipmaster/consensus",
-  "description": "Friday expert picks on 25 football matches from players with records since 1997. Read-only, free.",
-  "version": "1.1.0",
+  "title": "TipMaster Soccer Expert Predictions",
+  "description": "Football (soccer) expert predictions from players with records since 1997: likely score, accuracy.",
+  "version": "1.2.0",
   "websiteUrl": "https://tipmaster.net/agents/",
   "repository": {
     "url": "https://github.com/We-The-Flywheel/tipmaster-mcp",
