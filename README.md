@@ -1,8 +1,9 @@
-# TipMaster Soccer Expert Predictions (MCP server)
+# TipMaster Expert Soccer Predictions (MCP server)
 
 Football (soccer) predictions from the players of TipMaster, a free prediction game that has
-run every week since 1997. For almost 30 years its players have predicted real matches and
-every prediction is on record, so TipMaster knows who has called matches right for years.
+run since 1997, with nearly 30 years of prediction-game experience. Expert groups are
+selected from recorded player performance; available history differs by mode. Crowd
+agreement is not a calibrated probability or a guarantee of accuracy.
 
 For each match: the most likely final score, the home/draw/away split of the Top 20%, Top 25%
 and All players (ranked by their own record), and the result once played. Plus how often each
@@ -13,7 +14,8 @@ group was right (home/draw/away and exact score). No individual player or name i
 - Classic: home/draw/away on 25 matches a week since 1997.
 
 Free, read-only, no account or key. Aggregates of at least 20 players, no odds, no bookmaker
-data, no single player's prediction. Published shares are final.
+data, no single player's prediction. National shares and Classic expert groups appear
+after the deadline; the Classic whole-crowd split is available while its round is open.
 
 Docs and rules of use: **https://tipmaster.net/agents/**
 
@@ -25,8 +27,9 @@ Remote MCP server (Streamable HTTP, stateless, no authentication):
 https://tipmaster.net/api/agent/mcp
 ```
 
-Claude: Settings, Connectors, Add custom connector with that URL. ChatGPT: Developer mode,
-create a connector with that URL and no authentication. Any MCP client:
+Claude: Customize, Connectors, Add custom connector with that URL. ChatGPT: Plugins,
+Add custom MCP server with that URL and no authentication. Account/workspace restrictions
+may apply; see the [setup guide](https://tipmaster.net/agents/connect/). Any MCP client:
 
 ```json
 {
@@ -37,7 +40,12 @@ create a connector with that URL and no authentication. Any MCP client:
 ```
 
 Tools (all read-only): `get_match_prediction` (one match by team names), `find_matches`,
-`get_accuracy`, `get_expert_picks` (this week's Classic round), `get_consensus`, `list_matches`.
+`get_accuracy`, `get_model_comparison`, `get_expert_picks` (this week's Classic round), `get_consensus`, `list_matches`.
+
+`get_model_comparison` reports a dated, retrospective stored-result benchmark fitted
+from imported Sportmonks fixtures. It compares published groups on the same matches,
+withholds paired rates below 50 matches and makes no high-confidence or superiority
+claim. Model training is offline; the public tool returns aggregate evaluation only.
 
 ## REST
 
