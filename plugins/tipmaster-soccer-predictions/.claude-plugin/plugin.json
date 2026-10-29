@@ -1,0 +1,22 @@
+{
+  "name": "tipmaster-soccer-predictions",
+  "version": "1.3.0",
+  "description": "Expert football (soccer) predictions from TipMaster's players, a prediction game running since 1997: compare expert groups, score predictions and measured accuracy.",
+  "author": {
+    "name": "The Flywheel Incorporation IBC (TipMaster)",
+    "email": "help@tipmaster.net",
+    "url": "https://tipmaster.net/agents/"
+  },
+  "homepage": "https://tipmaster.net/agents/",
+  "repository": "https://github.com/We-The-Flywheel/tipmaster-mcp",
+  "license": "MIT",
+  "keywords": [
+    "soccer",
+    "football",
+    "predictions",
+    "Bundesliga",
+    "Premier League"
+  ],
+  "displayName": "TipMaster Expert Soccer Predictions",
+  "privacyPolicyUrl": "https://tipmaster.net/privacy/"
+}

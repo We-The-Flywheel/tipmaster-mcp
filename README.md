@@ -1,4 +1,37 @@
-# TipMaster Expert Soccer Predictions (MCP server)
+# TipMaster plugins and MCP servers
+
+Two integrations are available from this repository:
+
+| Product | Connection | Included skill |
+| --- | --- | --- |
+| **TipMaster Expert Soccer Predictions** | Public, seven read-only tools; no account required | Find matches, compare published expert groups, review measured accuracy and the retrospective model benchmark |
+| **TipMaster Coach** | OAuth to your own TipMaster account; nine reads and confirmed prediction saves | Review open matches and deadlines, save chosen scores, follow results and standings |
+
+## Install the plugins
+
+Claude Code:
+
+```text
+/plugin install tipmaster-soccer-predictions --marketplace We-The-Flywheel/tipmaster-mcp
+/plugin install tipmaster-coach --marketplace We-The-Flywheel/tipmaster-mcp
+```
+
+For Codex, add this repository as a plugin marketplace and choose either product.
+The catalog is at `.agents/plugins/marketplace.json`; Claude's catalog is at
+`.claude-plugin/marketplace.json`. Each `plugins/` folder also contains the portable
+OpenAI manifest and its skill. Repository availability is separate from approval
+in the providers' public directories.
+
+Coach connects to `https://tipmaster.net/api/coach/mcp`. It uses your account's
+available game modes. Saves require your chosen scores and open targets; they can
+replace existing predictions and become immutable at the deadline. Opponents'
+predictions remain private until lock. No payments or account-management tools.
+
+[Connection guide](https://tipmaster.net/agents/connect/) ·
+[Coach plugin](plugins/tipmaster-coach/) ·
+[Expert plugin](plugins/tipmaster-soccer-predictions/)
+
+## TipMaster Expert Soccer Predictions (MCP server)
 
 Football (soccer) predictions from the players of TipMaster, a free prediction game that has
 run since 1997, with nearly 30 years of prediction-game experience. Expert groups are
@@ -65,7 +98,8 @@ informational and is not betting advice.
 
 ## This repository
 
-Holds the registry manifest (`server.json`) for the official MCP Registry. The server itself
-runs inside the TipMaster site; there is no code to install here.
+Holds the public registry manifest (`server.json`), Coach registry manifest
+(`servers/coach.json`), plugin catalogs and integration skills. Both MCP servers
+run inside TipMaster; the packages contain no game server or player data.
 
 Terms: https://tipmaster.net/agents/terms/ · Privacy: https://tipmaster.net/privacy/

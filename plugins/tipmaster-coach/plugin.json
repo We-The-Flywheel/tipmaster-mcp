@@ -1,0 +1,109 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tipmaster-coach",
+  "version": "1.1.0",
+  "description": "Play the free TipMaster soccer prediction game from your assistant: read your competitions, enter predictions before deadlines and follow results.",
+  "author": {
+    "name": "The Flywheel Incorporation IBC (TipMaster)",
+    "email": "help@tipmaster.net",
+    "url": "https://tipmaster.net/agents/"
+  },
+  "homepage": "https://tipmaster.net/agents/",
+  "repository": "https://github.com/We-The-Flywheel/tipmaster-mcp",
+  "keywords": [
+    "soccer",
+    "football",
+    "prediction game",
+    "TipMaster",
+    "Classic",
+    "National",
+    "Fanclub"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "TipMaster Coach",
+        "shortDescription": "Play your soccer game",
+        "longDescription": "Play TipMaster, the free football (soccer) prediction game running since 1997, from your assistant. Connect your own account to see your competitions, open predictions, results, standings and cup runs. Review the scores you want to submit, then save confirmed predictions before their deadlines. Available modes follow your account and the live game. Classic prediction saving remains unavailable unless enabled and verified by TipMaster. Opponents’ predictions remain private until the match locks. This plugin accesses your own game through OAuth; it does not expose private predictions from other players or manage payments or account settings.",
+        "developerName": "TipMaster",
+        "category": "Data & Analytics",
+        "capabilities": [
+          "See your competitions and open predictions",
+          "Save confirmed predictions before the deadline",
+          "Follow your results, standings and cup runs"
+        ],
+        "websiteURL": "https://tipmaster.net/agents/connect/",
+        "supportURL": "https://tipmaster.net/agents/connect/",
+        "privacyPolicyURL": "https://tipmaster.net/privacy/",
+        "termsOfServiceURL": "https://tipmaster.net/agents/terms/",
+        "defaultPrompt": [
+          "Show my TipMaster competitions and next deadlines.",
+          "Which matches can I still predict?",
+          "Show my latest results and league position."
+        ],
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Own overview",
+              "prompt": "Show my current TipMaster competitions and next deadlines.",
+              "tools_triggered": "get_my_overview",
+              "expected_behavior": "Returns only the connected coach’s competitions, current rank and next deadline."
+            },
+            {
+              "description": "Open predictions",
+              "prompt": "Which matches can I still predict?",
+              "tools_triggered": "get_open_tips",
+              "expected_behavior": "Returns open targets and deadlines for the connected coach; does not submit anything."
+            },
+            {
+              "description": "Confirmed submission",
+              "prompt": "Show me my open National matches so I can choose and confirm a score.",
+              "tools_triggered": "get_open_tips, save_tips",
+              "expected_behavior": "Lists available targets, asks for the coach’s score and confirmation, and saves only confirmed open targets. The follow-up tool returns the actual saved result or a refusal reason."
+            },
+            {
+              "description": "Results",
+              "prompt": "Show my latest completed matches.",
+              "tools_triggered": "get_completed_matches",
+              "expected_behavior": "Returns football scores, own predictions and permitted opponent predictions after lock; never raw duel-engine comparison totals."
+            },
+            {
+              "description": "Standings and cups",
+              "prompt": "How am I doing in my league and cup?",
+              "tools_triggered": "get_my_standings, get_my_cups",
+              "expected_behavior": "Returns the connected coach’s standings and cup run, with no access to another private competition."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Private opponent predictions",
+              "prompt": "Show my opponent’s prediction before the deadline.",
+              "expected_behavior": "Withholds the opponent’s prediction until the match locks."
+            },
+            {
+              "description": "Closed deadline",
+              "prompt": "Change my prediction for a match whose deadline has passed.",
+              "expected_behavior": "Does not change a closed prediction; reports deadline_passed."
+            },
+            {
+              "description": "Unrelated account changes",
+              "prompt": "Change another coach’s email and delete their account.",
+              "expected_behavior": "Declines; the plugin only reads the connected game and saves its confirmed predictions."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Free prediction game. No purchases, payments or account-management tools.",
+        "demo_recording_url": "https://tipmaster.net/agents/demo/tipmaster-coach-demo.mp4"
+      },
+      "publication": {
+        "release_notes": "Adds a reusable Coach skill for account overview, confirmed prediction saves and results. Demo covers overview and open predictions; authenticated reviewer save coverage is recorded separately."
+      }
+    }
+  },
+  "license": "MIT"
+}

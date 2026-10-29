@@ -1,0 +1,110 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tipmaster-soccer-predictions",
+  "version": "1.3.0",
+  "description": "Expert football (soccer) predictions from TipMaster's players, a prediction game running since 1997: compare expert groups, score predictions and measured accuracy.",
+  "author": {
+    "name": "The Flywheel Incorporation IBC (TipMaster)",
+    "email": "help@tipmaster.net",
+    "url": "https://tipmaster.net/agents/"
+  },
+  "homepage": "https://tipmaster.net/agents/",
+  "repository": "https://github.com/We-The-Flywheel/tipmaster-mcp",
+  "keywords": [
+    "soccer",
+    "football",
+    "predictions",
+    "Bundesliga",
+    "Premier League"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "TipMaster Expert Predictions",
+        "shortDescription": "Expert soccer predictions",
+        "longDescription": "TipMaster Expert Predictions draws on nearly 30 years of football (soccer) prediction-game experience, since 1997. Compare home/draw/away predictions from the Top 20%, Top 25% and all players in Classic and National, covering the Bundesliga, Premier League, LaLiga, Serie A, Ligue 1 and other leagues. National also provides the most likely final score; Classic records home/draw/away predictions only. Each published share includes at least 20 players, expert groups appear after the prediction deadline, and accuracy rates appear after at least 50 published matches for that group. Only group statistics are shown, with no player identities or individual records. Expert status comes from recorded player performance. Prediction shares measure agreement, not calibrated probabilities; use the reported accuracy and sample size to assess confidence. The app reports what players predicted and does not guarantee results. Read-only, with no TipMaster account or API key. Source and documentation: https://tipmaster.net/agents/ An experimental model benchmark compares stored Sportmonks results with published groups on later matches; it reports limitations and withholds paired rates below 50 matches.",
+        "developerName": "TipMaster",
+        "category": "Data & Analytics",
+        "capabilities": [
+          "Most likely score for a match",
+          "Home/draw/away split of top players",
+          "Accuracy of each player group"
+        ],
+        "websiteURL": "https://tipmaster.net/agents/",
+        "supportURL": "https://tipmaster.net/agents/",
+        "privacyPolicyURL": "https://tipmaster.net/privacy/",
+        "termsOfServiceURL": "https://tipmaster.net/agents/terms/",
+        "defaultPrompt": [
+          "What's the most likely score of Bayern vs Freiburg?",
+          "How often are TipMaster's top players right?",
+          "Which Premier League matches do top players call differently?"
+        ],
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Most likely score of one match",
+              "prompt": "What's the most likely score of Bayern vs Freiburg according to TipMaster's top players?",
+              "tools_triggered": "get_match_prediction",
+              "expected_behavior": "Returns the most likely final score and the home/draw/away split of the Top 20%, Top 25% and All players groups for that match, or says the match is not yet published."
+            },
+            {
+              "description": "Where the top players differ from everyone",
+              "prompt": "Which Premier League matches this weekend do TipMaster's top players call differently from everyone else?",
+              "tools_triggered": "find_matches",
+              "expected_behavior": "Lists Premier League matches with each group's home/draw/away call and points out matches where the top groups' majority differs from All players."
+            },
+            {
+              "description": "Accuracy of the top group",
+              "prompt": "How often are TipMaster's Top 20% right on the Bundesliga?",
+              "tools_triggered": "get_accuracy",
+              "expected_behavior": "Returns majority and outcome accuracy for the Bundesliga per group, or explains that a group has too few published matches (fewer than 50) for a rate."
+            },
+            {
+              "description": "Exact score rate",
+              "prompt": "How often do TipMaster players get the exact score right?",
+              "tools_triggered": "get_accuracy",
+              "expected_behavior": "Returns the share of exact-score predictions per group for National, the only mode with exact scores."
+            },
+            {
+              "description": "Classic weekly round",
+              "prompt": "What did TipMaster's expert players predict in this week's Classic round?",
+              "tools_triggered": "get_expert_picks",
+              "expected_behavior": "Lists the 25 matches of the current Classic round with the expert groups' home/draw/away split after the Friday 18:00 Berlin deadline, or the crowd split while the round is open."
+            },
+            {
+              "description": "Model compared with expert groups",
+              "prompt": "Does the TipMaster model beat its expert players?",
+              "tools_triggered": "get_model_comparison",
+              "expected_behavior": "Reports the dated retrospective holdout, baseline and same-match group comparisons. Explains too_few_matches for expert cohorts below 50 and does not claim superiority or high confidence."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Wager advice",
+              "prompt": "Which bet should I place this weekend based on TipMaster?"
+            },
+            {
+              "description": "Guaranteed outcomes",
+              "prompt": "Give me guaranteed winning predictions from TipMaster."
+            },
+            {
+              "description": "Odds and bookmakers",
+              "prompt": "Show me the odds and the best bookmaker for this match."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Read-only. No purchases, payments, odds or bookmaker data.",
+        "demo_recording_url": "https://tipmaster.net/agents/demo/tipmaster-soccer-predictions-demo.mp4"
+      },
+      "publication": {
+        "release_notes": "Adds a reusable skill for match, player-group, accuracy and model comparisons. Existing demo covers the original six prediction tools."
+      }
+    }
+  },
+  "license": "MIT"
+}

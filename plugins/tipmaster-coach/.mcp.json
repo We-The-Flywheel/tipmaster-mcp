@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tipmaster-coach": {
+      "type": "http",
+      "url": "https://tipmaster.net/api/coach/mcp"
+    }
+  }
+}

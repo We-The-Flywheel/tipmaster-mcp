@@ -1,0 +1,20 @@
+{
+  "name": "tipmaster",
+  "description": "TipMaster expert soccer predictions and your own prediction game.",
+  "owner": {
+    "name": "TipMaster",
+    "email": "help@tipmaster.net"
+  },
+  "plugins": [
+    {
+      "name": "tipmaster-soccer-predictions",
+      "source": "./plugins/tipmaster-soccer-predictions",
+      "description": "Expert football (soccer) predictions from TipMaster's players, a prediction game running since 1997: compare expert groups, score predictions and measured accuracy."
+    },
+    {
+      "name": "tipmaster-coach",
+      "source": "./plugins/tipmaster-coach",
+      "description": "Play the free TipMaster soccer prediction game from your assistant: read your competitions, enter predictions before deadlines and follow results."
+    }
+  ]
+}

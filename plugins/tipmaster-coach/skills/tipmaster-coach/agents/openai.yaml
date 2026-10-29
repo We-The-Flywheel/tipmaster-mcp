@@ -1,0 +1,11 @@
+interface:
+  display_name: "TipMaster Coach"
+  short_description: "Manage your soccer predictions and follow results"
+  default_prompt: "Use $tipmaster-coach to show my open matches and help me review my scores."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "tipmaster-coach"
+      description: "The connected coach's TipMaster game"
+      transport: "streamable_http"
+      url: "https://tipmaster.net/api/coach/mcp"

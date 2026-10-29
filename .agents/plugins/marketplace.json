@@ -1,0 +1,32 @@
+{
+  "name": "tipmaster",
+  "interface": {
+    "displayName": "TipMaster"
+  },
+  "plugins": [
+    {
+      "name": "tipmaster-soccer-predictions",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tipmaster-soccer-predictions"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Data & Analytics"
+    },
+    {
+      "name": "tipmaster-coach",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tipmaster-coach"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Data & Analytics"
+    }
+  ]
+}

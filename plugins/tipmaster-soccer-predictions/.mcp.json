@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tipmaster": {
+      "type": "http",
+      "url": "https://tipmaster.net/api/agent/mcp"
+    }
+  }
+}

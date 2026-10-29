@@ -1,0 +1,11 @@
+interface:
+  display_name: "TipMaster Expert Predictions"
+  short_description: "Compare soccer predictions and measured accuracy"
+  default_prompt: "Use $tipmaster-expert-soccer to compare the published player groups for my match."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "tipmaster"
+      description: "Public TipMaster soccer prediction statistics"
+      transport: "streamable_http"
+      url: "https://tipmaster.net/api/agent/mcp"
